@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="name">{{ vegetables.name }}</h2>
+    <div>
+        {{ vegetables.description }}
+        <hr>
+        Калорийность: {{ vegetables.calories }}
+    </div>
+    <h3>
+        {{ vegetables.price }} сом
+    </h3>
+    <a class="btn btn-warning" href="{% url 'vegetable-update' vegetables.id %}">Изменить</a>
+    <form action="{% url 'vegetable-delete' vegetables.id %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Удалить</button>
+    </form>
+{% endblock %}
